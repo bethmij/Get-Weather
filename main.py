@@ -5,4 +5,5 @@ longitude = 80.220978
 api_key = "f7ea23e4c43dab84aca723334945185d"
 
 if __name__ == "__main__":
-    WeatherCheck.get_weather(latitude, longitude, api_key,"343")
+    weatherCheck = WeatherCheck()
+    weatherCheck.get_weather(latitude, longitude, api_key)
