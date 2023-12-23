@@ -1,4 +1,4 @@
-from weatherCheck import WeatherCheck
+from weather_check import WeatherCheck
 
 latitude = 6.053519
 longitude = 80.220978
