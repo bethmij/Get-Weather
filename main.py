@@ -1,6 +1,6 @@
-import time
 from multiprocessing import Queue
 
+from get_img import GetImg
 from weather_check import WeatherCheck
 
 latitude = 6.053519
@@ -12,8 +12,12 @@ if __name__ == "__main__":
     weatherCheck = WeatherCheck(latitude, longitude, api_key, queries)
     weatherCheck.start()
 
+    getImage = GetImg(queries)
+    getImage.start()
+
     # for i in range(0, 10):
     #     print(queries)
     #     time.sleep(5)
 
     weatherCheck.join()
+    getImage.join()
