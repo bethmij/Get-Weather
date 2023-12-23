@@ -6,17 +6,19 @@ import time
 
 class WeatherCheck(Thread):
 
-    def __init__(self, latitude, longitude, api_key, weather):
+    def __init__(self, latitude, longitude, api_key, queries):
         super(WeatherCheck,self).__init__()
         self.latitude = latitude
         self.longitude = longitude
         self.api_key = api_key
-        self.weather = weather
+        self.queries = queries
+        self.weather = {}
 
     def run(self):
         while True:
             weather = self.get_weather(self.latitude, self.longitude, self.api_key)
             self.update_weather(weather)
+            self.queries.put(self.weather)
             time.sleep(5)
 
     def update_weather(self, weather):
